@@ -3,6 +3,16 @@
 This is the beginning of a small library for working with 
 [json pointers](http://tools.ietf.org/html/draft-pbryan-zyp-json-pointer-00).
 
+A JSON pointer is a list of keys separated by a `/`. After the split, the keys
+are URL decoded. The main things to remember when writing out a JSONPointer
+are:
+
+*   If a key conttains a forward slash (`/`), replace it with `%2F` so it
+    doesn't get split. The `%2F` will be replaced with a `/` after splitting
+    the JSONPointer expression into keys.
+*   If a key contains a percent sign (`%`), replace it with `%25` so it gets
+    decoded into a `%` sign.
+
 ## Usage
 
 To split a jsonpointer string:
